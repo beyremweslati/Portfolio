@@ -3,6 +3,9 @@ import "./App.css";
 import TopBar from "./components/TopBar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import Projects from "./sections/Projects";
+import Experience from "./sections/Experience";
+import Contact from "./sections/Contact";
 function App() {
   return (
     <div className="App">
@@ -11,6 +14,9 @@ function App() {
         <Hero />
       </div>
       <About />
+      <Projects />
+      <Experience />
+      <Contact />
     </div>
   );
 }

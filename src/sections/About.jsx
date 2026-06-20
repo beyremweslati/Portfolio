@@ -11,8 +11,13 @@ function About() {
     { name: "Node.js", category: "Backend" },
     { name: "FastAPI", category: "Backend" },
     { name: "Langchain", category: "AI" },
+    { name: "Pytorch", category: "AI" },
     { name: "SQL", category: "Database" },
     { name: "MongoDB", category: "Database" },
+    { name: "Git", category: "Tools" },
+    { name: "Docker", category: "Tools" },
+    { name: "Nginx", category: "Tools" },
+    { name: "Linux", category: "Tools" },
   ];
 
   const getHoverCategoryColor = (category) => {
@@ -27,15 +32,20 @@ function About() {
         return "hover:bg-yellow-200/80 hover:border-yellow-400 hover:text-yellow-900";
       case "AI":
         return "hover:bg-orange-200/80 hover:border-orange-400 hover:text-orange-900";
+      case "Tools":
+        return "hover:bg-lime-200/80 hover:border-lime-400 hover:text-lime-900";
       default:
         return "hover:bg-white/80 hover:border-white hover:text-gray-900";
     }
   };
 
   return (
-    <div className="flex-1 flex items-center flex-col min-h-screen">
+    <div
+      className="flex-1 flex items-center flex-col min-h-screen mb-10"
+      id="about"
+    >
       <div className="w-full flex flex-col items-center">
-        <h2 className="text-(--orange)">About Me</h2>
+        <h2 className="text-(--orange) ">About Me</h2>
       </div>
       <div className="flex-1 flex w-full flex-row items-center justify-between p-2">
         <div className="flex flex-1 justify-end relative">
@@ -47,7 +57,7 @@ function About() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
 
-              {/* Bottom Frosted Glass Overlay */}
+              {/* Blur Overlay */}
               <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-white/30 via-white/0 to-transparent backdrop-blur-md mask-[linear-gradient(to_top,black_30%,transparent_100%)]"></div>
 
               <div className="relative z-20 flex flex-col justify-end items-start h-full p-6 pb-8 text-gray-900 w-full text-left">
@@ -63,7 +73,6 @@ function About() {
                   </p>
                 </div>
 
-                {/* Skills */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {skills.map((skill, index) => (
                     <span
@@ -79,7 +88,6 @@ function About() {
                 </div>
 
                 <div className="w-full flex justify-end">
-                  {/* subtle brightness effect when hovered */}
                   <a
                     href="#contact"
                     className="px-4 py-1.5 bg-(--orange) text-white text-sm font-semibold rounded-full transition-transform duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg hover:brightness-110"
@@ -98,11 +106,11 @@ function About() {
             robotics and problem-solving. Over the years, this curiosity has
             developed into a broader interest in{" "}
             <span className="font-medium text-(--orange)">
-              software engineering
+              Software Engineering
             </span>{" "}
             and{" "}
             <span className="font-medium text-(--orange)">
-              artificial intelligence.
+              Artificial Intelligence.
             </span>
           </p>
           <br />
