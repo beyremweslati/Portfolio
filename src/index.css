@@ -19,6 +19,8 @@
   --mono: ui-monospace, Consolas, monospace;
 
   --orange: #ffa94d;
+  --orangeDark: #ee892a;
+  --orangeDarker: #cb7423;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;

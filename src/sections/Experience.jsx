@@ -2,7 +2,7 @@ import TimelineItem from "../components/TimeLineItem";
 const Experience = () => {
   return (
     <div
-      className="flex-1 flex items-center flex-col min-h-screen mb-20"
+      className="flex-1 flex items-center flex-col min-h-screen mb-35"
       id="experience"
     >
       <div className="w-full flex flex-col items-center">

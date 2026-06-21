@@ -90,7 +90,7 @@ function About() {
                 <div className="w-full flex justify-end">
                   <a
                     href="#contact"
-                    className="px-4 py-1.5 bg-(--orange) text-white text-sm font-semibold rounded-full transition-transform duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg hover:brightness-110"
+                    className="px-4 py-1.5 bg-(--orangeDark) text-black text-sm font-medium rounded-full transition-transform duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg hover:bg-(--orangeDarker)"
                   >
                     Contact Me
                   </a>
