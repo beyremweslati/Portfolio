@@ -41,7 +41,7 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
             </p>
           </div>
         </div>
-        <div className="flex-1 m-2 relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-black/20 p-3 shadow-xl group flex flex-col items-center aspect-[16/9]">
+        <div className="flex-1 m-2 relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-black/20 p-3 shadow-xl group flex flex-col items-center aspect-video">
           <img
             ref={imgRef}
             src={images[index]}
@@ -70,9 +70,7 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
                bg-black/40 text-white p-2 rounded-full 
                opacity-0 group-hover:opacity-100 
                transition-all duration-300 hover:bg-black/70"
-          >
-            ‹
-          </button>
+          ></button>
 
           {/* Right arrow */}
           <button
