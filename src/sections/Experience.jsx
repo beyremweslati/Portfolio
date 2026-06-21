@@ -13,7 +13,7 @@ const Experience = () => {
       </div>
       <div className="w-full flex justify-center pt-10">
         <div className="relative w-full max-w-4xl">
-          <div className="absolute left-1/2 top-0 h-full w-[2px] bg-white/10 -translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-white/10 -translate-x-1/2" />
           <TimelineItem
             title="Lanterns Studios — Software Engineering Intern"
             subtitle="Automated Bottleneck Detection & Performance Optimization System"
