@@ -103,7 +103,10 @@ const Contact = () => {
     });
   });
   return (
-    <div className="flex-1 flex items-center flex-col h-fit mb-15" id="contact">
+    <div
+      className="flex-1 flex items-center flex-col h-fit mb-15 p-5 "
+      id="contact"
+    >
       <div className="w-full flex flex-col items-center">
         <h2 className="text-(--orange) contactSub">Contact Me</h2>
         <p className="text-gray-300 text-2xl text-center contactText">
@@ -112,7 +115,7 @@ const Contact = () => {
           Drop me a message, and 'll be in touch soon!
         </p>
       </div>
-      <div className="w-1/2 mt-5 ">
+      <div className="w-fit mt-5 lg:w-1/2 ">
         <form
           className="flex flex-col items-center contact-form"
           onSubmit={handleSubmit}

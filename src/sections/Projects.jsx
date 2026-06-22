@@ -88,7 +88,7 @@ const Projects = () => {
     >
       <div className="w-full flex flex-col items-center">
         <h2 className="text-(--orange) projectTitle">Projects</h2>
-        <p className="text-gray-300 text-2xl projectText">
+        <p className="text-gray-300 text-2xl projectText text-center">
           Combining Software Engineering, Artificial Intelligence, and
           continuous learning.
         </p>

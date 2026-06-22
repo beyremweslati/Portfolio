@@ -7,11 +7,11 @@ import { SplitText } from "gsap/SplitText.js";
 
 function Hero() {
   useGSAP(() => {
+    const mm = gsap.matchMedia();
+
     const nextSection = document.querySelector("#about");
     const heroSplit = new SplitText(".title", { type: "chars, words" });
     const paraSplit = new SplitText(".sub", { type: "lines" });
-
-    heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
 
     gsap.from("#line", {
       scaleX: 0,
@@ -44,20 +44,23 @@ function Hero() {
       delay: 1.5,
     });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#hero",
-          start: "top top",
-          end: "+=119%",
-          scrub: 1,
-          pin: false,
-        },
-      })
-      .to(".scroll", {
-        y: () => nextSection.offsetTop,
-        ease: "power1.inOut",
-      });
+    mm.add("(min-width: 1024px)", () => {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: "#hero",
+            start: "top top",
+            end: "+=119%",
+            scrub: 1,
+          },
+        })
+        .to(".scroll", {
+          y: () => nextSection.offsetTop,
+          ease: "power1.inOut",
+        });
+    });
+
+    return () => mm.revert();
   }, []);
 
   return (
@@ -67,23 +70,30 @@ function Hero() {
           <div className="flex items-center gap-4 text-lg">
             <p className="shrink-0 intro">Hi I am</p>
             <div
-              className="h-1 w-138 bg-(--orange) rounded-full"
+              className="h-1 w-60 md:w-151 lg:w-187 bg-(--orange) rounded-full"
               id="line"
             ></div>
           </div>
 
-          <h1 className="text-[100px] leading-[1.2] title text-gradient">
-            Beyrem Oueslati
+          <h1 className="text-center leading-[0.9] title">
+            <span className="block md:inline-block text-7xl md:text-8xl lg:text-[130px] -translate-x-10 md:translate-x-0">
+              Beyrem
+            </span>
+
+            <span className="block md:inline-block text-7xl md:text-8xl lg:text-[130px] translate-x-10 md:translate-x-0 md:ml-4">
+              Oueslati
+            </span>
           </h1>
 
-          <div className="self-end -translate-x-10 text-right text-(--orange) text-3xl font-semibold tracking-widest sub">
-            <p>A SOFTWARE</p>
-            <p>ENGINEER</p>
+          <div className="self-end text-right text-(--orange) text-md sm:text-xl md:text-2xl lg:text-3xl font-semibold tracking-widest md:-translate-x-10 sub">
+            <p>
+              A SOFTWARE <br /> ENGINEER
+            </p>
           </div>
         </div>
       </div>
-      <div className="flex-1 w-full flex justify-between p-8">
-        <div className=" w-15 flex justify-end items-center flex-col gap-8 scroll ">
+      <div className="flex-1 w-full flex justify-between p-4 md:p-8">
+        <div className=" w-15 flex justify-end items-center flex-col gap-8 scroll">
           <a
             href="https://github.com/beyremweslati"
             target="_blank"

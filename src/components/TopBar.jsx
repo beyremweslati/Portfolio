@@ -14,7 +14,7 @@ function TopBar() {
 
   return (
     <>
-      <div className="flex flex-row m-12 mt-14 gap-10 text-base font-light justify-end text-[var(--orange)] tracking-widest">
+      <div className="flex flex-wrap justify-center sm:justify-end gap-6 sm:gap-10 px-4 sm:m-12 mt-6 sm:mt-14 text-sm sm:text-base font-light text-[var(--orange)] tracking-widest">
         <div className="relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-[var(--orange)] after:transition-all after:duration-300 hover:after:w-full item">
           <a href="#about">ABOUT ME</a>
         </div>

@@ -26,7 +26,7 @@ function About() {
 
     const t1 = gsap.timeline({
       scrollTrigger: {
-        trigger: "#lastText",
+        trigger: ".card",
         start: "bottom bottom",
         pin: false,
         toggleActions: "play none none reverse",
@@ -110,9 +110,9 @@ function About() {
       <div className="w-full flex flex-col items-center pb-10 aboutsub">
         <h2 className="text-(--orange)">About Me</h2>
       </div>
-      <div className="flex-1 flex w-full flex-row items-center justify-between p-5 2xl:p-30">
-        <div className="flex flex-1 justify-end relative">
-          <div className="relative w-3/4 max-w-md flex justify-center items-center">
+      <div className="flex-1 flex w-full flex-col items-center justify-between gap-5 lg:flex-row lg:gap-0 2xl:p-30">
+        <div className="flex flex-1 relative justify-center lg:justify-end">
+          <div className="relative w-fit max-w-md flex justify-center items-center">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 h-135 w-4/5 card">
               <img
                 src={profilePic}
@@ -163,31 +163,33 @@ function About() {
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center px-10 md:px-12 lg:pr-24 space-y-6 text-lg font-light leading-relaxed text-gray-300 border-l-2 border-(--orange) borderLine">
-          <p className="aboutText">
-            My journey in the field of technology began with a passion for
-            robotics and problem-solving. Over the years, this curiosity has
-            developed into a broader interest in{" "}
-            <span className="font-medium text-(--orange)">
-              Software Engineering
-            </span>{" "}
-            and{" "}
-            <span className="font-medium text-(--orange)">
-              Artificial Intelligence.
-            </span>
-          </p>
-          <br />
-          <p className="aboutText">
-            Today, I'm a Computer Science student focused on building
-            intelligent systems. I work with full-stack applications, APIs,
-            databases, and intelligent systems, creating software for real-world
-            use cases and integrating modern AI concepts.
-          </p>
-          <br />
-          <p className="aboutText" id="lastText">
-            I am constantly learning, experimenting with new technologies, and
-            looking for opportunities to grow and improve.
-          </p>
+        <div className="flex-1 w-full flex flex-col justify-center items-center px-10 md:px-12 lg:pr-24 space-y-6 text-md font-light leading-relaxed text-gray-300 border-(--orange) borderLine lg:border-l-2 lg:text-lg">
+          <div>
+            <p className="aboutText">
+              My journey in the field of technology began with a passion for
+              robotics and problem-solving. Over the years, this curiosity has
+              developed into a broader interest in{" "}
+              <span className="font-medium text-(--orange)">
+                Software Engineering
+              </span>{" "}
+              and{" "}
+              <span className="font-medium text-(--orange)">
+                Artificial Intelligence.
+              </span>
+            </p>
+            <br />
+            <p className="aboutText">
+              Today, I'm a Computer Science student focused on building
+              intelligent systems. I work with full-stack applications, APIs,
+              databases, and intelligent systems, creating software for
+              real-world use cases and integrating modern AI concepts.
+            </p>
+            <br />
+            <p className="aboutText text-start" id="lastText">
+              I am constantly learning, experimenting with new technologies, and
+              looking for opportunities to grow and improve.
+            </p>
+          </div>
         </div>
       </div>
     </div>
