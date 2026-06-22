@@ -12,19 +12,33 @@ const TimelineItem = ({
 }) => {
   const isLeft = side === "left";
   const containerRef = useRef(null);
-
   useGSAP(() => {
-    gsap.from(containerRef.current, {
-      opacity: 0,
-      x: isLeft ? -80 : 80,
-      y: 40,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 85%",
-        end: "bottom 55%",
-        scrub: 1,
-      },
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1024px)", () => {
+      gsap.from(containerRef.current, {
+        opacity: 0,
+        x: isLeft ? -80 : 80,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          end: "bottom 55%",
+          scrub: 1,
+        },
+      });
+    });
+    mm.add("(max-width: 1023px)", () => {
+      gsap.from(containerRef.current, {
+        opacity: 0,
+        y: 80,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          end: "bottom 55%",
+          scrub: 1,
+        },
+      });
     });
     gsap.from(containerRef.current.querySelectorAll("p"), {
       opacity: 0,
@@ -36,6 +50,7 @@ const TimelineItem = ({
         toggleActions: "play none none reverse",
       },
     });
+    return () => mm.revert();
   });
   return (
     <div

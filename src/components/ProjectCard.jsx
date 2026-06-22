@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import gsap from "gsap";
-
+import { createPortal } from "react-dom";
 const ProjectCard = ({ title, subtitle, description, imageList }) => {
   const images = imageList;
 
@@ -71,7 +71,7 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
               }
               className="absolute left-4 top-1/2 -translate-y-1/2 
                bg-black/40 text-white p-2 rounded-full 
-               opacity-0 group-hover:opacity-100 
+               opacity-100 md:opacity-0 group-hover:opacity-100 
                transition-all duration-300 hover:bg-black/70"
             >
               ‹
@@ -82,35 +82,84 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
               onClick={() => changeImage((index + 1) % images.length)}
               className="absolute right-4 top-1/2 -translate-y-1/2 
                bg-black/40 text-white p-2 rounded-full 
-               opacity-0 group-hover:opacity-100 
-               transition-all duration-300 hover:bg-black/70"
+               opacity-100 md:opacity-0 group-hover:opacity-100 
+               transition-all duration-300 hover:bg-black/70 "
             >
               ›
             </button>
           </div>
         </div>
       </div>
-      {selectedImg && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-          onClick={() => setSelectedImg(null)}
-        >
-          <div className="relative flex items-center justify-center">
-            <img
-              src={selectedImg}
-              alt="fullscreen"
-              className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-md"
-            />
-
-            <button
-              onClick={() => setSelectedImg(null)}
-              className="absolute -top-3 -right-3 text-white text-2xl bg-black/60 rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80"
+      {selectedImg &&
+        createPortal(
+          <div
+            onClick={() => setSelectedImg(null)}
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: "100vw",
+              height: "100vh",
+              background: "rgba(0,0,0,0.8)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 9999,
+              overflow: "hidden",
+              boxSizing: "border-box",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                maxWidth: "95vw",
+                maxHeight: "95vh",
+                display: "flex",
+              }}
             >
-              ×
-            </button>
-          </div>
-        </div>
-      )}
+              <img
+                src={selectedImg}
+                alt="fullscreen"
+                style={{
+                  display: "block",
+                  maxWidth: "95vw",
+                  maxHeight: "95vh",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  borderRadius: "8px",
+                }}
+              />
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelectedImg(null);
+                }}
+                style={{
+                  position: "absolute",
+                  top: 8,
+                  right: 8,
+                  color: "white",
+                  fontSize: "24px",
+                  background: "rgba(0,0,0,0.7)",
+                  borderRadius: "50%",
+                  width: 32,
+                  height: 32,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                ×
+              </button>
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 };

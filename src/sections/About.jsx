@@ -163,7 +163,7 @@ function About() {
           </div>
         </div>
 
-        <div className="flex-1 w-full flex flex-col justify-center items-center px-10 md:px-12 lg:pr-24 space-y-6 text-md font-light leading-relaxed text-gray-300 border-(--orange) borderLine lg:border-l-2 lg:text-lg">
+        <div className="flex-1 w-full flex flex-col justify-center items-center px-10 md:px-12 lg:pr-24 space-y-6 text-md font-light leading-relaxed text-gray-300 borderLine lg:border-l-(--orange) lg:border-l-2 lg:text-lg">
           <div>
             <p className="aboutText">
               My journey in the field of technology began with a passion for
