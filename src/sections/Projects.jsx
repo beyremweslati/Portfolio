@@ -1,4 +1,8 @@
 import ProjectCard from "../components/ProjectCard";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const Projects = () => {
   const project1 = [
     "/projects/project1/1.png",
@@ -39,14 +43,52 @@ const Projects = () => {
     "/projects/project4/4.png",
     "/projects/project4/5.png",
   ];
+
+  useGSAP(() => {
+    const t1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".projectTitle",
+        start: "bottom bottom",
+        pin: false,
+        toggleActions: "play none none reverse",
+      },
+    });
+    t1.from(".projectTitle", {
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+      stagger: 0.1,
+    }).from(".projectText", {
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+      stagger: 0.1,
+    });
+    const cards = gsap.utils.toArray(".projectCard");
+    cards.forEach((card, index) => {
+      gsap.from(card, {
+        xPercent: -80,
+        scale: 0.9,
+        opacity: 0,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: index === 0 ? ".projectTitle" : cards[index - 1],
+          start: "top bottom",
+          end: "bottom 20%",
+          scrub: 1,
+        },
+      });
+    });
+  }, []);
+
   return (
     <div
       className="flex-1 flex items-center flex-col min-h-screen mb-20"
       id="projects"
     >
       <div className="w-full flex flex-col items-center">
-        <h2 className="text-(--orange)">Projects</h2>
-        <p className="text-gray-300 text-2xl">
+        <h2 className="text-(--orange) projectTitle">Projects</h2>
+        <p className="text-gray-300 text-2xl projectText">
           Combining Software Engineering, Artificial Intelligence, and
           continuous learning.
         </p>

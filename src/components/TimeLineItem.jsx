@@ -1,4 +1,7 @@
-// TimelineItem.jsx
+import { useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 const TimelineItem = ({
   title,
   subtitle,
@@ -8,9 +11,35 @@ const TimelineItem = ({
   skills = [],
 }) => {
   const isLeft = side === "left";
+  const containerRef = useRef(null);
 
+  useGSAP(() => {
+    gsap.from(containerRef.current, {
+      opacity: 0,
+      x: isLeft ? -80 : 80,
+      y: 40,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 85%",
+        end: "bottom 55%",
+        scrub: 1,
+      },
+    });
+    gsap.from(containerRef.current.querySelectorAll("p"), {
+      opacity: 0,
+      y: 10,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 65%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
   return (
     <div
+      ref={containerRef}
       className={`relative mb-14 flex ${
         isLeft ? "justify-start" : "justify-end"
       } group`}
@@ -40,7 +69,7 @@ const TimelineItem = ({
         </p>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-(--orange)" />
+      <div className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-(--orange) shadow-[0_0_15px_var(--orangeDarker)]" />
     </div>
   );
 };

@@ -28,7 +28,7 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
   };
 
   return (
-    <div className="border border-white/40 rounded-md w-full h-fill">
+    <div className="border border-white/40 rounded-md w-full h-fill projectCard bg-(--bg)">
       <div className="flex flex-row items-center h-full">
         <div className="p-4 flex-1 flex flex-col gap-8 m-2">
           <div className="flex flex-col gap-2 border-b-(--orange) border-b-3">

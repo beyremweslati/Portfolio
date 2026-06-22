@@ -14,6 +14,7 @@ function About() {
           trigger: ".aboutsub",
           start: "bottom bottom",
           pin: false,
+          toggleActions: "play none none reverse",
         },
       })
       .from(".aboutsub", {
@@ -28,10 +29,11 @@ function About() {
         trigger: "#lastText",
         start: "bottom bottom",
         pin: false,
+        toggleActions: "play none none reverse",
       },
     });
     t1.from(paraSplit.lines, {
-      yPercent: 100,
+      yPercent: 200,
       duration: 1.5,
       ease: "power2.out",
       stagger: 0.08,
@@ -106,9 +108,9 @@ function About() {
       id="about"
     >
       <div className="w-full flex flex-col items-center pb-10 aboutsub">
-        <h2 className="text-(--orange) ">About Me</h2>
+        <h2 className="text-(--orange)">About Me</h2>
       </div>
-      <div className="flex-1 flex w-full flex-row items-center justify-between p-2">
+      <div className="flex-1 flex w-full flex-row items-center justify-between p-5 2xl:p-30">
         <div className="flex flex-1 justify-end relative">
           <div className="relative w-3/4 max-w-md flex justify-center items-center">
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 h-135 w-4/5 card">
@@ -161,7 +163,7 @@ function About() {
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center px-5 md:px-12 lg:pr-24 space-y-6 text-lg font-light leading-relaxed text-gray-300 border-l-2 border-(--orange) borderLine">
+        <div className="flex-1 flex flex-col justify-center px-10 md:px-12 lg:pr-24 space-y-6 text-lg font-light leading-relaxed text-gray-300 border-l-2 border-(--orange) borderLine">
           <p className="aboutText">
             My journey in the field of technology began with a passion for
             robotics and problem-solving. Over the years, this curiosity has

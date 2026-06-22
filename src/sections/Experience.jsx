@@ -1,19 +1,59 @@
 import TimelineItem from "../components/TimeLineItem";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 const Experience = () => {
+  useGSAP(() => {
+    const t1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".experienceSub",
+        start: "bottom bottom",
+        pin: false,
+        toggleActions: "play none none reverse",
+      },
+    });
+    t1.from(".experienceSub", {
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+      stagger: 0.1,
+    }).from(".experienceText", {
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+      stagger: 0.1,
+    });
+
+    gsap.fromTo(
+      ".timeline-line",
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        transformOrigin: "top",
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#experience",
+          start: "top center",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      },
+    );
+  });
+
   return (
     <div
       className="flex-1 flex items-center flex-col min-h-screen mb-35"
       id="experience"
     >
       <div className="w-full flex flex-col items-center">
-        <h2 className="text-(--orange)">Experience</h2>
-        <p className="text-gray-300 text-2xl">
+        <h2 className="text-(--orange) experienceSub">Experience</h2>
+        <p className="text-gray-300 text-2xl text-center experienceText">
           My journey in the tech industry.
         </p>
       </div>
       <div className="w-full flex justify-center pt-10">
         <div className="relative w-full max-w-4xl">
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-white/10 -translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-white/40 -translate-x-1/2 timeline-line" />
           <TimelineItem
             title="Lanterns Studios — Software Engineering Intern"
             subtitle="Automated Bottleneck Detection & Performance Optimization System"
@@ -31,7 +71,7 @@ const Experience = () => {
               "FastAPI",
               "Langchain",
               "PostgreSQL",
-              "React.js",
+              "ReactJS",
               "Material UI",
             ]}
           />
@@ -48,9 +88,9 @@ const Experience = () => {
               "Containerized application using Docker",
             ]}
             skills={[
-              "React.js",
+              "ReactJS",
               "Node.js",
-              "Express",
+              "Express.js",
               "MongoDB",
               "Docker",
               "Ant Design",

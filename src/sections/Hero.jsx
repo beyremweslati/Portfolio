@@ -7,6 +7,7 @@ import { SplitText } from "gsap/SplitText.js";
 
 function Hero() {
   useGSAP(() => {
+    const nextSection = document.querySelector("#about");
     const heroSplit = new SplitText(".title", { type: "chars, words" });
     const paraSplit = new SplitText(".sub", { type: "lines" });
 
@@ -49,36 +50,40 @@ function Hero() {
           trigger: "#hero",
           start: "top top",
           end: "+=119%",
-          scrub: true,
+          scrub: 1,
           pin: false,
         },
       })
       .to(".scroll", {
-        y: "125vh",
+        y: () => nextSection.offsetTop,
         ease: "power1.inOut",
       });
   }, []);
 
   return (
-    <div className="flex-1 flex items-center flex-col" id="hero">
-      <div className="flex flex-col justify-start w-1/2 items-center mt-40 p-0">
-        <div className="flex flex-row w-full pr-5 pl-5 items-center gap-4 text-lg">
-          <p className="shrink-0 intro">Hi I am</p>
-          <div
-            className="flex-1 h-1 bg-(--orange) rounded-full"
-            id="line"
-          ></div>
-        </div>
-        <div className="h-fit">
-          <h1 className="text-[100px] leading-[1.2] title">Beyrem Oueslati</h1>
-        </div>
-        <div className="w-full flex flex-col items-end text-(--orange) mr-25 text-3xl font-semibold tracking-widest sub">
-          <p>A SOFTWARE</p>
-          <p>ENGINEER</p>
+    <div className="flex-1 flex items-center flex-col " id="hero">
+      <div className="flex-1 flex flex-col justify-end items-center">
+        <div className="w-fit flex flex-col">
+          <div className="flex items-center gap-4 text-lg">
+            <p className="shrink-0 intro">Hi I am</p>
+            <div
+              className="h-1 w-138 bg-(--orange) rounded-full"
+              id="line"
+            ></div>
+          </div>
+
+          <h1 className="text-[100px] leading-[1.2] title text-gradient">
+            Beyrem Oueslati
+          </h1>
+
+          <div className="self-end -translate-x-10 text-right text-(--orange) text-3xl font-semibold tracking-widest sub">
+            <p>A SOFTWARE</p>
+            <p>ENGINEER</p>
+          </div>
         </div>
       </div>
       <div className="flex-1 w-full flex justify-between p-8">
-        <div className=" w-15 flex justify-end items-center flex-col gap-8 scroll">
+        <div className=" w-15 flex justify-end items-center flex-col gap-8 scroll ">
           <a
             href="https://github.com/beyremweslati"
             target="_blank"

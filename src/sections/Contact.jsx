@@ -4,6 +4,9 @@ import { FiFacebook } from "react-icons/fi";
 import emailService from "../helpers/email";
 import { useState } from "react";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -39,18 +42,81 @@ const Contact = () => {
     }
   };
 
+  useGSAP(() => {
+    const t1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".contactSub",
+        start: "bottom bottom",
+        pin: false,
+        toggleActions: "play none none reverse",
+      },
+    });
+    t1.from(".contactSub", {
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+      stagger: 0.1,
+    }).from(".contactText", {
+      opacity: 0,
+      y: 50,
+      duration: 0.7,
+      stagger: 0.1,
+    });
+    gsap.from(".contact-form", {
+      opacity: 0,
+      y: 50,
+      duration: 0.5,
+      ease: "power1.out",
+      delay: 0.8,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 75%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    gsap.from(".grow", {
+      scaleX: 0,
+      transformOrigin: "center",
+      duration: 1,
+      ease: "power2.out",
+      stagger: 0.2,
+      delay: 1.2,
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 65%",
+        toggleActions: "play none none reverse",
+      },
+    });
+    gsap.from(".contact-social", {
+      opacity: 0,
+      y: 15,
+      stagger: 0.1,
+      duration: 0.6,
+      delay: 1.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top 70%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
   return (
     <div className="flex-1 flex items-center flex-col h-fit mb-15" id="contact">
       <div className="w-full flex flex-col items-center">
-        <h2 className="text-(--orange)">Contact Me</h2>
-        <p className="text-gray-300 text-2xl text-center">
+        <h2 className="text-(--orange) contactSub">Contact Me</h2>
+        <p className="text-gray-300 text-2xl text-center contactText">
           Whether you have a question, a project idea, or just want to connect.
           <br />
           Drop me a message, and 'll be in touch soon!
         </p>
       </div>
       <div className="w-1/2 mt-5 ">
-        <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col items-center contact-form"
+          onSubmit={handleSubmit}
+        >
           <div className="flex w-full mb-4">
             <input
               type="text"
@@ -119,7 +185,7 @@ const Contact = () => {
                 className="hover:text-(--orange) transition-colors"
               >
                 <FiFacebook
-                  className="text-white hover:text-(--orange) transition-colors"
+                  className="text-white hover:text-(--orange) transition-colors contact-social"
                   size={25}
                 />
               </a>
@@ -130,7 +196,7 @@ const Contact = () => {
                 className="hover:text-(--orange) transition-colors"
               >
                 <FiGithub
-                  className="text-white hover:text-(--orange) transition-colors"
+                  className="text-white hover:text-(--orange) transition-colors contact-social"
                   size={25}
                 />
               </a>
@@ -141,7 +207,7 @@ const Contact = () => {
                 className="hover:text-(--orange) transition-colors"
               >
                 <FiLinkedin
-                  className="text-white hover:text-(--orange) transition-colors"
+                  className="text-white hover:text-(--orange) transition-colors contact-social"
                   size={25}
                 />
               </a>
