@@ -73,7 +73,9 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
                bg-black/40 text-white p-2 rounded-full 
                opacity-0 group-hover:opacity-100 
                transition-all duration-300 hover:bg-black/70"
-            ></button>
+            >
+              ‹
+            </button>
 
             {/* Right arrow */}
             <button
@@ -93,14 +95,20 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={() => setSelectedImg(null)}
         >
-          <img
-            src={selectedImg}
-            alt="fullscreen"
-            className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-md"
-          />
-          <button className="absolute top-5 right-5 text-white text-2xl">
-            X
-          </button>
+          <div className="relative flex items-center justify-center">
+            <img
+              src={selectedImg}
+              alt="fullscreen"
+              className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain rounded-md"
+            />
+
+            <button
+              onClick={() => setSelectedImg(null)}
+              className="absolute -top-3 -right-3 text-white text-2xl bg-black/60 rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80"
+            >
+              ×
+            </button>
+          </div>
         </div>
       )}
     </>

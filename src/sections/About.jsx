@@ -27,7 +27,7 @@ function About() {
     const t1 = gsap.timeline({
       scrollTrigger: {
         trigger: ".card",
-        start: "bottom bottom",
+        start: "top bottom",
         pin: false,
         toggleActions: "play none none reverse",
       },

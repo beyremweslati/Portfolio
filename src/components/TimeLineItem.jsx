@@ -41,22 +41,21 @@ const TimelineItem = ({
     <div
       ref={containerRef}
       className={`relative mb-14 flex ${
-        isLeft ? "justify-start" : "justify-end"
-      } group`}
+        isLeft ? "md:justify-start" : "md:justify-end"
+      } justify-start group`}
     >
       <div
-        className={`w-2/3 ${isLeft ? "pr-40 text-right" : "pl-40 text-left"}`}
+        className={`w-full md:w-2/3 px-8 md:px-0 text-left ${
+          isLeft ? "md:pr-40 md:text-right" : "md:pl-40"
+        }`}
       >
         <h3 className="text-white text-lg font-semibold group-hover:text-(--orange) transition-colors duration-300">
           {title}
         </h3>
-
         <p className="text-white/80 text-sm">{subtitle}</p>
-
         <p className="text-white/40 text-xs mt-1 group-hover:text-(--orange) transition-colors duration-300">
           {date}
         </p>
-
         <div className="text-white/60 text-xs mt-2 space-y-1">
           {points.map((p, i) => (
             <p key={i}>
@@ -69,7 +68,7 @@ const TimelineItem = ({
         </p>
       </div>
 
-      <div className="absolute left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-(--orange) shadow-[0_0_15px_var(--orangeDarker)]" />
+      <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1 w-3 h-3 rounded-full bg-(--orange) shadow-[0_0_15px_var(--orangeDarker)]" />
     </div>
   );
 };

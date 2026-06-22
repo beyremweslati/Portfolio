@@ -93,7 +93,7 @@ const Projects = () => {
           continuous learning.
         </p>
       </div>
-      <div className="w-full flex flex-col gap-4 pl-15 pr-15 pt-4 items-center">
+      <div className="w-full flex flex-col gap-4 px-2 md:pl-15 md:pr-15 pt-4 items-center">
         <ProjectCard
           title="Automated Bottleneck Detection & Performance Optimization System"
           subtitle="AI-Powered Performance Analysis and Optimization Assistant for Unreal Engine"
