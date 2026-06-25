@@ -4,44 +4,45 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const Projects = () => {
+  const baseURL = (url) => `${import.meta.env.BASE_URL}${url}`;
   const project1 = [
-    "/projects/project1/1.png",
-    "/projects/project1/2.png",
-    "/projects/project1/3.png",
-    "/projects/project1/4.png",
-    "/projects/project1/5.png",
-    "/projects/project1/6.png",
-    "/projects/project1/7.png",
-    "/projects/project1/8.png",
-    "/projects/project1/9.png",
+    baseURL("/projects/project1/1.png"),
+    baseURL("/projects/project1/2.png"),
+    baseURL("/projects/project1/3.png"),
+    baseURL("/projects/project1/4.png"),
+    baseURL("/projects/project1/5.png"),
+    baseURL("/projects/project1/6.png"),
+    baseURL("/projects/project1/7.png"),
+    baseURL("/projects/project1/8.png"),
+    baseURL("/projects/project1/9.png"),
   ];
 
   const project2 = [
-    "/projects/project2/1.png",
-    "/projects/project2/2.png",
-    "/projects/project2/3.png",
-    "/projects/project2/4.png",
-    "/projects/project2/5.png",
-    "/projects/project2/6.png",
-    "/projects/project2/7.png",
+    baseURL("/projects/project2/1.png"),
+    baseURL("/projects/project2/2.png"),
+    baseURL("/projects/project2/3.png"),
+    baseURL("/projects/project2/4.png"),
+    baseURL("/projects/project2/5.png"),
+    baseURL("/projects/project2/6.png"),
+    baseURL("/projects/project2/7.png"),
   ];
   const project3 = [
-    "/projects/project3/1.png",
-    "/projects/project3/2.png",
-    "/projects/project3/3.png",
-    "/projects/project3/4.png",
-    "/projects/project3/5.png",
-    "/projects/project3/6.png",
-    "/projects/project3/7.png",
-    "/projects/project3/8.png",
-    "/projects/project3/9.png",
+    baseURL("/projects/project3/1.png"),
+    baseURL("/projects/project3/2.png"),
+    baseURL("/projects/project3/3.png"),
+    baseURL("/projects/project3/4.png"),
+    baseURL("/projects/project3/5.png"),
+    baseURL("/projects/project3/6.png"),
+    baseURL("/projects/project3/7.png"),
+    baseURL("/projects/project3/8.png"),
+    baseURL("/projects/project3/9.png"),
   ];
   const project4 = [
-    "/projects/project4/1.png",
-    "/projects/project4/2.png",
-    "/projects/project4/3.png",
-    "/projects/project4/4.png",
-    "/projects/project4/5.png",
+    baseURL("/projects/project4/1.png"),
+    baseURL("/projects/project4/2.png"),
+    baseURL("/projects/project4/3.png"),
+    baseURL("/projects/project4/4.png"),
+    baseURL("/projects/project4/5.png"),
   ];
 
   useGSAP(() => {
