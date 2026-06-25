@@ -86,19 +86,19 @@ function About() {
   const getHoverCategoryColor = (category) => {
     switch (category) {
       case "Language":
-        return "hover:bg-blue-200/80 hover:border-blue-400 hover:text-blue-900";
+        return "hover:bg-blue-200/80 hover:border-blue-400 hover:text-blue-900 active:bg-blue-200/80 active:border-blue-400 active:text-blue-900";
       case "Frontend":
-        return "hover:bg-green-200/80 hover:border-green-400 hover:text-green-900";
+        return "hover:bg-green-200/80 hover:border-green-400 hover:text-green-900 active:bg-green-200/80 active:border-green-400 active:text-green-900";
       case "Backend":
-        return "hover:bg-purple-200/80 hover:border-purple-400 hover:text-purple-900";
+        return "hover:bg-purple-200/80 hover:border-purple-400 hover:text-purple-900 active:bg-purple-200/80 active:border-purple-400 active:text-purple-900";
       case "Database":
-        return "hover:bg-yellow-200/80 hover:border-yellow-400 hover:text-yellow-900";
+        return "hover:bg-yellow-200/80 hover:border-yellow-400 hover:text-yellow-900 active:bg-yellow-200/80 active:border-yellow-400 active:text-yellow-900";
       case "AI":
-        return "hover:bg-orange-200/80 hover:border-orange-400 hover:text-orange-900";
+        return "hover:bg-orange-200/80 hover:border-orange-400 hover:text-orange-900 active:bg-orange-200/80 active:border-orange-400 active:text-orange-900";
       case "Tools":
-        return "hover:bg-lime-200/80 hover:border-lime-400 hover:text-lime-900";
+        return "hover:bg-lime-200/80 hover:border-lime-400 hover:text-lime-900 active:bg-lime-200/80 active:border-lime-400 active:text-lime-900";
       default:
-        return "hover:bg-white/80 hover:border-white hover:text-gray-900";
+        return "hover:bg-white/80 hover:border-white hover:text-gray-900 active:bg-white/80 active:border-white active:text-gray-900";
     }
   };
 
@@ -180,7 +180,7 @@ function About() {
             <br />
             <p className="aboutText">
               Today, I'm a Computer Science student focused on building
-              intelligent systems. I work with full-stack applications, APIs,
+              intelligent systems. I work on full-stack applications, APIs,
               databases, and intelligent systems, creating software for
               real-world use cases and integrating modern AI concepts.
             </p>

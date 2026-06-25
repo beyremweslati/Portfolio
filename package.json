@@ -1,9 +1,12 @@
 {
   "name": "my-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "homepage": "https://beyremweslati.github.io/Portfolio",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -13,6 +16,7 @@
     "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.3.1",
+    "gh-pages": "^6.3.0",
     "gsap": "^3.15.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

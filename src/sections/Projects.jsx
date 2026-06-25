@@ -89,8 +89,7 @@ const Projects = () => {
       <div className="w-full flex flex-col items-center">
         <h2 className="text-(--orange) projectTitle">Projects</h2>
         <p className="text-gray-300 text-2xl projectText text-center">
-          Combining Software Engineering, Artificial Intelligence, and
-          continuous learning.
+          Combining Software Engineering & Artificial Intelligence
         </p>
       </div>
       <div className="w-full flex flex-col gap-4 px-2 md:pl-15 md:pr-15 pt-4 items-center">
@@ -118,7 +117,8 @@ const Projects = () => {
           title="DocVoice"
           subtitle="Medical voice recognition for report transcription using fine-tuned speech-to-text model"
           description="It is built around a preprocessing pipeline that generates and structures a medical-domain vocabulary audio dataset using medical terms created with ElevenLabs, followed by audio normalization and dataset preparation for training and evaluation.
-          A pretrained Whisper model is fine-tuned using LoRA-based training to improve recognition of medical terminology. Performance is evaluated using standard metrics including WER and CER. Reducing WER from 277.19% to 70.18% (~74% reduction) and CER from 68.89% to 31.11% (~55% reduction) on a relatively small dataset (~220 audio samples) and trained on a medium-spec personal machine.
+          A pretrained Whisper model is fine-tuned using LoRA-based training to improve recognition of medical terminology. Performance is evaluated using standard metrics including WER and CER. 
+          Reducing WER from 277.19% to 70.18% (~74% reduction) and CER from 68.89% to 31.11% (~55% reduction) on a relatively small dataset (~220 audio samples) and trained on a medium-spec personal machine.
           The final system is deployed via a Streamlit interface for medical transcription."
           imageList={project4}
         />
