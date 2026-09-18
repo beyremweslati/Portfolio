@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { createPortal } from "react-dom";
 const ProjectCard = ({ title, subtitle, description, imageList }) => {
@@ -8,8 +8,17 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
   const [index, setIndex] = useState(0);
   const imgRef = useRef(null);
 
+  useEffect(() => {
+    imageList.forEach((src) => {
+      const image = new Image();
+      image.src = src;
+    });
+  }, [imageList]);
+
   const changeImage = (newIndex) => {
     const img = imgRef.current;
+
+    gsap.killTweensOf(img);
 
     gsap.to(img, {
       opacity: 0,
@@ -17,7 +26,6 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
       duration: 0.2,
       onComplete: () => {
         setIndex(newIndex);
-
         gsap.fromTo(
           img,
           { opacity: 0, scale: 1.02 },
