@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import gsap from "gsap";
 import { createPortal } from "react-dom";
 const ProjectCard = ({ title, subtitle, description, imageList }) => {
@@ -6,33 +6,24 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
 
   const [selectedImg, setSelectedImg] = useState(null);
   const [index, setIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(true);
   const imgRef = useRef(null);
-
-  useEffect(() => {
-    imageList.forEach((src) => {
-      const image = new Image();
-      image.src = src;
-    });
-  }, [imageList]);
 
   const changeImage = (newIndex) => {
     const img = imgRef.current;
 
     gsap.killTweensOf(img);
+    setImageLoaded(false);
+    setIndex(newIndex);
+  };
 
-    gsap.to(img, {
-      opacity: 0,
-      scale: 0.98,
-      duration: 0.2,
-      onComplete: () => {
-        setIndex(newIndex);
-        gsap.fromTo(
-          img,
-          { opacity: 0, scale: 1.02 },
-          { opacity: 1, scale: 1, duration: 0.3 },
-        );
-      },
-    });
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+    gsap.fromTo(
+      imgRef.current,
+      { opacity: 0, scale: 1.02 },
+      { opacity: 1, scale: 1, duration: 0.3 },
+    );
   };
 
   return (
@@ -55,10 +46,13 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
           <div className="flex-1 m-2 relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-black/20 p-3 shadow-xl group flex flex-col items-center aspect-video">
             <img
               ref={imgRef}
+              key={images[index]}
               src={images[index]}
+              onLoad={handleImageLoad}
               onClick={() => setSelectedImg(images[index])}
               alt={`project image ${index + 1}`}
               className="w-full h-full object-contain rounded-md"
+              style={{ opacity: imageLoaded ? 1 : 0 }}
             />
 
             <div className="flex gap-3 mt-3">
