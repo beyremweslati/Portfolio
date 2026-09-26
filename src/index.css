@@ -4,7 +4,7 @@
 :root {
   --text: #9ca3af;
   --text-h: #f3f4f6;
-  --bg: #242424;
+  --bg: #18181b;
   --border: #2e303a;
   --code-bg: #1f2028;
   --shadow:
@@ -14,9 +14,9 @@
   --heading: 'Inter', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
-  --orange: #ffa94d;
-  --orangeDark: #ee892a;
-  --orangeDarker: #cb7423;
+  --orange: #f59e0b;
+  --orangeDark: #d97706;
+  --orangeDarker: #b45309;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;

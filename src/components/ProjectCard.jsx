@@ -1,7 +1,12 @@
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import { createPortal } from "react-dom";
-const ProjectCard = ({ title, subtitle, description, imageList }) => {
+const ProjectCard = ({
+  title,
+  subtitle,
+  description,
+  imageList,
+}) => {
   const images = imageList;
 
   const [selectedImg, setSelectedImg] = useState(null);
@@ -28,22 +33,25 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
 
   return (
     <>
-      <div className="border border-white/40 rounded-md w-full h-fill projectCard bg-(--bg)">
-        <div className="flex flex-col items-center h-full lg:flex-row">
-          <div className="p-4 flex-1 flex flex-col gap-8 m-2">
-            <div className="flex flex-col gap-2 border-b-(--orange) border-b-3">
-              <h3 className="text-xl font-semibold text-(--orange)">{title}</h3>
-              <h4 className="text-lg font-medium text-white pb-3">
+      <article className="projectCard group w-full overflow-hidden rounded-xl border border-white/15 bg-white/[0.03] shadow-xl">
+        <div className="h-1 w-full bg-(--orange)" />
+        <div className="flex flex-col gap-6 p-4 sm:p-6 lg:flex-row lg:gap-10 lg:p-8">
+          <div className="flex flex-1 flex-col justify-center lg:max-w-[42%]">
+            <div className="flex flex-col gap-3">
+              <h3 className="text-2xl font-semibold leading-tight text-white">
+                {title}
+              </h3>
+              <h4 className="text-base font-medium leading-relaxed text-(--orange)">
                 {subtitle}
               </h4>
             </div>
-            <div>
-              <p className="text-white/55 text-sm whitespace-pre-line">
+            <div className="mt-6">
+              <p className="text-sm leading-7 text-white/55 whitespace-pre-line">
                 {description}
               </p>
             </div>
           </div>
-          <div className="flex-1 m-2 relative w-full h-full rounded-lg overflow-hidden border border-white/10 bg-black/20 p-3 shadow-xl group flex flex-col items-center aspect-video">
+          <div className="relative flex-1 overflow-hidden rounded-lg border border-white/10 bg-black/30 p-2 shadow-2xl lg:max-w-[58%]">
             <img
               ref={imgRef}
               key={images[index]}
@@ -51,16 +59,20 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
               onLoad={handleImageLoad}
               onClick={() => setSelectedImg(images[index])}
               alt={`project image ${index + 1}`}
-              className="w-full h-full object-contain rounded-md"
+              className="aspect-video w-full rounded-md object-contain transition-transform duration-500 group-hover:scale-[1.01]"
               style={{ opacity: imageLoaded ? 1 : 0 }}
             />
 
-            <div className="flex gap-3 mt-3">
+            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-black/60 px-3 py-2 backdrop-blur-sm">
               {images.map((_, i) => (
                 <button
                   key={i}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    i === index ? "bg-white" : "bg-white/30"
+                  onClick={() => changeImage(i)}
+                  aria-label={`View project image ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === index
+                      ? "w-6 bg-(--orange)"
+                      : "w-1.5 bg-white/40 hover:bg-white/80"
                   }`}
                 />
               ))}
@@ -71,10 +83,11 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
               onClick={() =>
                 changeImage((index - 1 + images.length) % images.length)
               }
-              className="absolute left-4 top-1/2 -translate-y-1/2 
-               bg-black/40 text-white p-2 rounded-full 
-               opacity-100 md:opacity-0 group-hover:opacity-100 
-               transition-all duration-300 hover:bg-black/70"
+              aria-label="Previous project image"
+              className="absolute left-4 top-1/2 -translate-y-1/2
+               rounded-full bg-black/60 p-2 text-white
+               opacity-100 md:opacity-0 group-hover:opacity-100
+               transition-all duration-300 hover:bg-(--orange) hover:text-black"
             >
               ‹
             </button>
@@ -82,16 +95,17 @@ const ProjectCard = ({ title, subtitle, description, imageList }) => {
             {/* Right arrow */}
             <button
               onClick={() => changeImage((index + 1) % images.length)}
-              className="absolute right-4 top-1/2 -translate-y-1/2 
-               bg-black/40 text-white p-2 rounded-full 
-               opacity-100 md:opacity-0 group-hover:opacity-100 
-               transition-all duration-300 hover:bg-black/70 "
+              aria-label="Next project image"
+              className="absolute right-4 top-1/2 -translate-y-1/2
+               rounded-full bg-black/60 p-2 text-white
+               opacity-100 md:opacity-0 group-hover:opacity-100
+               transition-all duration-300 hover:bg-(--orange) hover:text-black"
             >
               ›
             </button>
           </div>
         </div>
-      </div>
+      </article>
       {selectedImg &&
         createPortal(
           <div

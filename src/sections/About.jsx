@@ -83,25 +83,6 @@ function About() {
     { name: "Linux", category: "Tools" },
   ];
 
-  const getHoverCategoryColor = (category) => {
-    switch (category) {
-      case "Language":
-        return "hover:bg-blue-200/80 hover:border-blue-400 hover:text-blue-900 active:bg-blue-200/80 active:border-blue-400 active:text-blue-900";
-      case "Frontend":
-        return "hover:bg-green-200/80 hover:border-green-400 hover:text-green-900 active:bg-green-200/80 active:border-green-400 active:text-green-900";
-      case "Backend":
-        return "hover:bg-purple-200/80 hover:border-purple-400 hover:text-purple-900 active:bg-purple-200/80 active:border-purple-400 active:text-purple-900";
-      case "Database":
-        return "hover:bg-yellow-200/80 hover:border-yellow-400 hover:text-yellow-900 active:bg-yellow-200/80 active:border-yellow-400 active:text-yellow-900";
-      case "AI":
-        return "hover:bg-orange-200/80 hover:border-orange-400 hover:text-orange-900 active:bg-orange-200/80 active:border-orange-400 active:text-orange-900";
-      case "Tools":
-        return "hover:bg-lime-200/80 hover:border-lime-400 hover:text-lime-900 active:bg-lime-200/80 active:border-lime-400 active:text-lime-900";
-      default:
-        return "hover:bg-white/80 hover:border-white hover:text-gray-900 active:bg-white/80 active:border-white active:text-gray-900";
-    }
-  };
-
   return (
     <div
       className="flex-1 flex items-center flex-col min-h-screen mb-10"
@@ -112,58 +93,63 @@ function About() {
       </div>
       <div className="flex-1 flex w-full flex-col items-center justify-between gap-5 lg:flex-row lg:gap-0 2xl:p-30">
         <div className="flex flex-1 relative justify-center lg:justify-end">
-          <div className="relative w-fit max-w-md flex justify-center items-center">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 h-135 w-4/5 card">
-              <img
-                src={profilePic}
-                alt="Profile Picture"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
+          <div className="w-full max-w-sm px-6 lg:px-0">
+            <div className="overflow-hidden rounded-2xl border border-white/15 bg-white/5 shadow-2xl card">
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={profilePic}
+                  alt="Beyrem Oueslati"
+                  className="h-full w-full object-cover object-[center_20%]"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-black/70 to-transparent" />
+                <p className="absolute bottom-4 left-5 text-xs font-medium uppercase tracking-[0.2em] text-(--orange)">
+                  Software Engineer
+                </p>
+              </div>
 
-              {/* Blur Overlay */}
-              <div className="absolute inset-x-0 bottom-0 h-3/4 bg-linear-to-t from-white/30 via-white/0 to-transparent backdrop-blur-md mask-[linear-gradient(to_top,black_30%,transparent_100%)]"></div>
-
-              <div className="relative z-20 flex flex-col justify-end items-start h-full p-6 pb-8 text-gray-900 w-full text-left">
-                <div className="flex-1"></div>
-
-                <div className="flex flex-col mb-4">
-                  <p className="text-2xl font-bold text-white up">
-                    Beyrem Oueslati
-                  </p>
-                  <p className="text-sm font-medium text-white mt-1 up">
-                    Developing intelligent systems with modern software
-                    technologies.
-                  </p>
+              <div className="p-5 text-left">
+                <div className="flex items-start justify-between gap-4 up">
+                  <div>
+                    <p className="text-2xl font-semibold tracking-tight text-white">
+                      Beyrem Oueslati
+                    </p>
+                    <p className="mt-1 text-sm text-white/55">
+                      Full-stack development & AI systems
+                    </p>
+                  </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-6 up">
-                  {skills.map((skill, index) => (
-                    <span
-                      key={index}
-                      className={`px-2 py-1 hover:-translate-y-1 bg-white/40 backdrop-blur-sm border border-white/50 rounded-md text-xs font-semibold text-gray-900 shadow-sm transition-all duration-300 cursor-default  ${getHoverCategoryColor(
-                        skill.category,
-                      )}`}
-                      title={skill.category}
-                    >
-                      {skill.name}
-                    </span>
-                  ))}
+                <div className="mt-6 up">
+                  <div className="mb-3 flex items-center justify-between">
+                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">
+                      Skills
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="rounded-md border border-white/15 bg-black/15 px-2.5 py-1 text-xs font-medium text-white/70 transition-colors duration-300 hover:border-(--orange) hover:text-(--orange)"
+                        title={skill.category}
+                      >
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="w-full flex justify-end">
-                  <a
-                    href="#contact"
-                    className="px-4 py-1.5 bg-(--orangeDark) text-black text-sm font-medium rounded-full transition-transform duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg hover:bg-(--orangeDarker)"
-                  >
-                    Contact Me
-                  </a>
-                </div>
+                <a
+                  href="#contact"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-lg border border-(--orange) px-4 py-2 text-sm font-medium text-(--orange) transition-colors duration-300 hover:bg-(--orange) hover:text-black"
+                >
+                  Let&apos;s work together
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex-1 w-full flex flex-col justify-center items-center px-10 md:px-12 lg:pr-24 space-y-6 text-md font-light leading-relaxed text-gray-300 borderLine lg:border-l-(--orange) lg:border-l-2 lg:text-lg">
+        <div className="flex-1 w-full flex flex-col justify-center items-center px-10 md:px-12 lg:pr-24 space-y-6 text-md font-light leading-relaxed text-gray-300 borderLine lg:text-lg">
           <div>
             <p className="aboutText">
               My journey in the field of technology began with a passion for

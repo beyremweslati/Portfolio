@@ -93,7 +93,7 @@ const Projects = () => {
           Combining Software Engineering & Artificial Intelligence
         </p>
       </div>
-      <div className="w-full flex flex-col gap-4 px-2 md:pl-15 md:pr-15 pt-4 items-center">
+      <div className="w-full flex flex-col gap-8 px-2 pt-8 items-center md:px-8 lg:px-15">
         <ProjectCard
           title="Automated Bottleneck Detection & Performance Optimization System"
           subtitle="AI-Powered Performance Analysis and Optimization Assistant for Unreal Engine"
@@ -110,17 +110,15 @@ const Projects = () => {
         <ProjectCard
           title="Echrily Admin Dashboard"
           subtitle="Admin dashboard for managing game data, orders, and platform analytics"
-          description="An admin dashboard built with MERN stack, providing centralized management of the Echrily platform. It integrates the RAWG API to search and import games into the system, and enables full management of game listings and customer orders through a structured interface built with React and Material UI. 
-          The dashboard integrates Nivo charts to visualize sales trends and platform activity, along with secure authentication and role-based access control for admin operations."
+          description="An admin dashboard built with MERN stack, providing centralized management of the Echrily platform. It integrates the RAWG API to search and import games into the system, and enables full management of game listings and customer orders through a structured interface built with React and Material UI."
           imageList={project3}
         />
         <ProjectCard
           title="DocVoice"
           subtitle="Medical voice recognition for report transcription using fine-tuned speech-to-text model"
-          description="It is built around a preprocessing pipeline that generates and structures a medical-domain vocabulary audio dataset using medical terms created with ElevenLabs, followed by audio normalization and dataset preparation for training and evaluation.
+          description="It is built around a preprocessing pipeline that generates and structures a medical-domain vocabulary audio dataset using medical terms created with ElevenLabs.
           A pretrained Whisper model is fine-tuned using LoRA-based training to improve recognition of medical terminology. Performance is evaluated using standard metrics including WER and CER. 
-          Reducing WER from 277.19% to 70.18% (~74% reduction) and CER from 68.89% to 31.11% (~55% reduction) on a relatively small dataset (~220 audio samples) and trained on a medium-spec personal machine.
-          The final system is deployed via a Streamlit interface for medical transcription."
+          Reducing WER from 277.19% to 70.18% (~74% reduction) and CER from 68.89% to 31.11% (~55% reduction) on a relatively small dataset (~220 audio samples) and trained on a medium-spec personal machine."
           imageList={project4}
         />
       </div>

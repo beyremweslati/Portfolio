@@ -109,31 +109,31 @@ const Contact = () => {
     >
       <div className="w-full flex flex-col items-center">
         <h2 className="text-(--orange) contactSub">Contact Me</h2>
-        <p className="text-gray-300 text-2xl text-center contactText">
+        <p className="max-w-2xl text-center text-xl leading-relaxed text-gray-300 contactText">
           Whether you have a question, a project idea, or just want to connect.
           <br />
-          Drop me a message, and 'll be in touch soon!
+          Drop me a message, and I&apos;ll be in touch soon.
         </p>
       </div>
-      <div className="w-fit mt-5 lg:w-1/2 ">
+      <div className="mt-8 w-full max-w-2xl rounded-2xl border border-white/10 bg-white/[0.03] p-5 shadow-xl sm:p-8">
         <form
-          className="flex flex-col items-center contact-form"
+          className="flex flex-col items-center gap-4 contact-form"
           onSubmit={handleSubmit}
         >
-          <div className="flex w-full mb-4">
+          <div className="grid w-full gap-4 sm:grid-cols-2">
             <input
               type="text"
-              placeholder="Your Name"
+              placeholder="Your name"
               name="name"
               required
-              className="p-2 border border-gray-300 rounded w-1/2 mr-2 active:border-(--orange) focus:border-(--orange) hover:border-(--orange) focus:ring-(--orange) focus:ring-opacity-50 focus:outline-none transition-colors duration-300"
+              className="w-full rounded-lg border border-white/15 bg-black/20 p-3 text-sm text-white outline-none placeholder:text-white/30 transition-colors duration-300 hover:border-white/30 focus:border-(--orange) focus:ring-1 focus:ring-(--orange)"
             />
             <input
               type="email"
-              placeholder="Your Email"
+              placeholder="you@example.com"
               name="email"
               required
-              className="p-2 border border-gray-300 rounded w-1/2 active:border-(--orange) focus:border-(--orange) hover:border-(--orange) focus:ring-(--orange) focus:ring-opacity-50 focus:outline-none transition-colors duration-300"
+              className="w-full rounded-lg border border-white/15 bg-black/20 p-3 text-sm text-white outline-none placeholder:text-white/30 transition-colors duration-300 hover:border-white/30 focus:border-(--orange) focus:ring-1 focus:ring-(--orange)"
             />
           </div>
           <input
@@ -141,16 +141,16 @@ const Contact = () => {
             placeholder="Subject"
             name="subject"
             required
-            className="mb-4 p-2 border border-gray-300 rounded w-full active:border-(--orange) focus:border-(--orange) hover:border-(--orange) focus:ring-(--orange) focus:ring-opacity-50 focus:outline-none transition-colors duration-300"
+            className="w-full rounded-lg border border-white/15 bg-black/20 p-3 text-sm text-white outline-none placeholder:text-white/30 transition-colors duration-300 hover:border-white/30 focus:border-(--orange) focus:ring-1 focus:ring-(--orange)"
           />
           <textarea
             placeholder="Your Message"
             name="message"
             required
-            className="mb-4 p-2 border border-gray-300 rounded w-full h-32 active:border-(--orange) focus:border-(--orange) hover:border-(--orange) focus:ring-(--orange) focus:ring-opacity-50 focus:outline-none transition-colors duration-300"
+            className="h-36 w-full resize-y rounded-lg border border-white/15 bg-black/20 p-3 text-sm text-white outline-none placeholder:text-white/30 transition-colors duration-300 hover:border-white/30 focus:border-(--orange) focus:ring-1 focus:ring-(--orange)"
           />
           <button
-            className={`text-black p-2 rounded text-sm w-full transition-colors duration-300 focus:ring-(--white) focus:ring-opacity-50 focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2
+            className={`mt-1 flex w-full items-center justify-center gap-2 rounded-lg p-3 text-sm font-medium text-black transition-colors duration-300 focus:ring-2 focus:ring-(--orange) disabled:cursor-not-allowed disabled:opacity-50
     ${
       success ? "bg-green-500" : "bg-(--orangeDark) hover:bg-(--orangeDarker)"
     }`}
@@ -168,23 +168,21 @@ const Contact = () => {
                 : "Send Message"}
           </button>
         </form>
-        <div>
-          <div className="flex items-center my-4">
-            <div className="grow border-t border-gray-500"></div>
-            <span className="shrink mx-1 text-gray-400 text-sm font-medium">
-              OR
+        <div className="mt-3">
+          <div className="flex items-center gap-3">
+            <div className="grow border-t border-white/10"></div>
+            <span className="text-xs font-medium uppercase tracking-widest text-white/30">
+              Or connect
             </span>
-            <div className="grow border-t border-gray-500"></div>
+            <div className="grow border-t border-white/10"></div>
           </div>
-          <div>
-            <p className="text-gray-300 text-center">
-              You can also reach me on:
-            </p>
-            <div className="flex justify-center gap-6 mt-4">
+          <div className="mt-4">
+            <div className="flex justify-center gap-6">
               <a
                 href="https://www.facebook.com/beyrem.weslati"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
                 className="hover:text-(--orange) transition-colors"
               >
                 <FiFacebook
@@ -196,6 +194,7 @@ const Contact = () => {
                 href="https://github.com/beyremweslati"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
                 className="hover:text-(--orange) transition-colors"
               >
                 <FiGithub
@@ -207,6 +206,7 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/beyremweslati"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="hover:text-(--orange) transition-colors"
               >
                 <FiLinkedin

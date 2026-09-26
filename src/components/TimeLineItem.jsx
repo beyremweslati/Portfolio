@@ -64,26 +64,26 @@ const TimelineItem = ({
           isLeft ? "md:pr-40 md:text-right" : "md:pl-40"
         }`}
       >
-        <h3 className="text-white text-lg font-semibold group-hover:text-(--orange) transition-colors duration-300">
+        <h3 className="text-white text-lg font-semibold leading-snug group-hover:text-(--orange) transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-white/80 text-sm">{subtitle}</p>
-        <p className="text-white/40 text-xs mt-1 group-hover:text-(--orange) transition-colors duration-300">
+        <p className="text-white/70 text-sm leading-relaxed mt-1">{subtitle}</p>
+        <p className="text-(--orange) text-[11px] uppercase tracking-[0.15em] mt-2 group-hover:text-white transition-colors duration-300">
           {date}
         </p>
-        <div className="text-white/60 text-xs mt-2 space-y-1">
+        <div className="text-white/60 text-xs mt-4 space-y-2 leading-relaxed">
           {points.map((p, i) => (
             <p key={i}>
               <span className="text-(--orange)">&gt;</span> {p}
             </p>
           ))}
         </div>
-        <p className="text-white/40 text-xs mt-2 group-hover:text-(--orange) transition-colors duration-300">
+        <p className="text-white/35 text-[11px] leading-relaxed mt-4 group-hover:text-(--orange) transition-colors duration-300">
           {skills.join(" · ")}
         </p>
       </div>
 
-      <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1 w-3 h-3 rounded-full bg-(--orange) shadow-[0_0_15px_var(--orangeDarker)]" />
+      <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-1.5 w-2.5 h-2.5 rounded-full bg-(--orange)" />
     </div>
   );
 };
