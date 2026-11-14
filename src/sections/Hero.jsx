@@ -34,7 +34,7 @@ function Hero() {
 
   return (
     <section className="hero" id="hero" aria-labelledby="hero-title">
-      <p className="hero-kicker">Software engineer / AI systems</p>
+      <p className="hero-kicker">Software engineer / AI solutions</p>
       <h1 className="hero-title" id="hero-title">
         <span>Beyrem</span>
         <span>Oueslati</span>

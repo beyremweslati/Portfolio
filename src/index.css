@@ -220,7 +220,7 @@ li { list-style: none; }
   grid-template-columns: minmax(0, 1.15fr) auto;
   align-items: end;
   gap: 2rem;
-  margin-top: auto;
+  margin-top: clamp(2.5rem, 5vh, 8.5rem);
 }
 .hero-copy {
   max-width: 34rem;
@@ -826,6 +826,82 @@ li { list-style: none; }
 }
 .back-to-top:hover { color: var(--signal-soft); border-color: var(--signal); }
 
+
+@media (min-width: 1440px) {
+  :root {
+    --container: clamp(1200px, 72vw, 1600px);
+    --gutter: clamp(4.5rem, 5vw, 7rem);
+    font-size: clamp(16px, calc(0.75rem + 0.25vw), 20px);
+    --nav-h: clamp(4.5rem, 5vw, 5.5rem);
+  }
+
+  .wordmark {
+    gap: 0.8rem;
+    font-size: 1.2rem;
+  }
+  .wordmark-mark {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.1rem;
+  }
+  .nav { gap: clamp(1.5rem, 2.6vw, 3rem); }
+  .nav-link { font-size: 1.4rem; }
+
+  .section-heading p,
+  .project-description,
+  .timeline-context,
+  .timeline-points li,
+  .contact-note,
+  .footer-copy {
+    font-size: 0.95rem;
+  }
+
+  .section-heading p { max-width: 26rem; }
+  .project-description { max-width: 38rem; }
+  .timeline-points { max-width: 68ch; }
+
+  .hero-kicker,
+  .scroll-cue,
+  .projects-stage-head,
+  .project-number,
+  .projectCard h4,
+  .project-count,
+  .timeline-date,
+  .timeline-skills,
+  .field label,
+  .form-status,
+  .footer-mark,
+  .back-to-top{
+    font-size: 1.1rem;
+  }
+
+  .social-link { font-size: 1.2rem; }
+  .social-link svg { width: 1.4rem; height: 1.4rem; }
+  .project-tech li { font-size: 1.1rem; }
+  .skills-group dt { font-size: 1.3rem; }
+  .skills-group dd { font-size: 1.1rem; }
+  .contact-submit { font-size: 1.3rem; }
+
+  .hero h1 {
+    max-width: 13ch;
+  }
+
+  .hero-copy {
+    max-width: 39rem;
+  }
+
+  .about-copy {
+    max-width: 50rem;
+  }
+  .about-card-caption { font-size: 1.1rem; }
+  .timeline {
+    max-width: 960px;
+  }
+
+  .projects-track .projectCard {
+    width: min(72vw, 1280px);
+  }
+}
 
 @media (max-width: 900px) {
   .section-heading { grid-template-columns: 1fr; }
