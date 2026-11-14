@@ -1,178 +1,125 @@
-import { useState, useRef } from "react";
-import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-const ProjectCard = ({
-  title,
-  subtitle,
-  description,
-  imageList,
-}) => {
-  const images = imageList;
+import { FiChevronLeft, FiChevronRight, FiX } from "react-icons/fi";
 
+const ProjectCard = ({ title, subtitle, description, images, tech = [], projectNumber }) => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [index, setIndex] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(true);
-  const imgRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+  const closeButtonRef = useRef(null);
 
   const changeImage = (newIndex) => {
-    const img = imgRef.current;
-
-    gsap.killTweensOf(img);
-    setImageLoaded(false);
+    setLoaded(false);
     setIndex(newIndex);
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-    gsap.fromTo(
-      imgRef.current,
-      { opacity: 0, scale: 1.02 },
-      { opacity: 1, scale: 1, duration: 0.3 },
-    );
-  };
+  useEffect(() => {
+    if (!selectedImg) return;
+
+    const previousFocus = document.activeElement;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setSelectedImg(null);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+    closeButtonRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      previousFocus?.focus?.();
+    };
+  }, [selectedImg]);
 
   return (
     <>
-      <article className="projectCard group w-full overflow-hidden rounded-xl border border-white/15 bg-white/[0.03] shadow-xl">
-        <div className="h-1 w-full bg-(--orange)" />
-        <div className="flex flex-col gap-6 p-4 sm:p-6 lg:flex-row lg:gap-10 lg:p-8">
-          <div className="flex flex-1 flex-col justify-center lg:max-w-[42%]">
-            <div className="flex flex-col gap-3">
-              <h3 className="text-2xl font-semibold leading-tight text-white">
-                {title}
-              </h3>
-              <h4 className="text-base font-medium leading-relaxed text-(--orange)">
-                {subtitle}
-              </h4>
-            </div>
-            <div className="mt-6">
-              <p className="text-sm leading-7 text-white/55 whitespace-pre-line">
-                {description}
-              </p>
-            </div>
+      <article className="projectCard">
+        <div className="project-inner">
+          <div className="project-copy">
+            <p className="project-number">
+              PROJECT / {String(projectNumber).padStart(2, "0")}
+            </p>
+            <h3>{title}</h3>
+            <h4>{subtitle}</h4>
+            <p className="project-description">{description}</p>
+            {tech.length > 0 && (
+              <ul className="project-tech" aria-label="Technologies used">
+                {tech.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            )}
           </div>
-          <div className="relative flex-1 overflow-hidden rounded-lg border border-white/10 bg-black/30 p-2 shadow-2xl lg:max-w-[58%]">
-            <img
-              ref={imgRef}
-              key={images[index]}
-              src={images[index]}
-              onLoad={handleImageLoad}
+          <div className="project-media">
+            <button
+              className="project-zoom"
+              type="button"
               onClick={() => setSelectedImg(images[index])}
-              alt={`project image ${index + 1}`}
-              className="aspect-video w-full rounded-md object-contain transition-transform duration-500 group-hover:scale-[1.01]"
-              style={{ opacity: imageLoaded ? 1 : 0 }}
-            />
+              aria-label={`Open ${title} screenshot ${index + 1} full screen`}
+            >
+              <img
+                key={images[index]}
+                src={images[index]}
+                onLoad={() => setLoaded(true)}
+                alt={`${title} screenshot ${index + 1}`}
+                className={loaded ? "is-loaded" : ""}
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
 
-            <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-black/60 px-3 py-2 backdrop-blur-sm">
-              {images.map((_, i) => (
+            <div className="project-controls">
+              <span className="project-count" aria-live="polite">
+                {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+              </span>
+              <div className="project-arrows">
                 <button
-                  key={i}
-                  onClick={() => changeImage(i)}
-                  aria-label={`View project image ${i + 1}`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    i === index
-                      ? "w-6 bg-(--orange)"
-                      : "w-1.5 bg-white/40 hover:bg-white/80"
-                  }`}
-                />
-              ))}
+                  type="button"
+                  onClick={() => changeImage((index - 1 + images.length) % images.length)}
+                  aria-label="Previous project image"
+                  className="project-arrow"
+                >
+                  <FiChevronLeft aria-hidden="true" size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => changeImage((index + 1) % images.length)}
+                  aria-label="Next project image"
+                  className="project-arrow"
+                >
+                  <FiChevronRight aria-hidden="true" size={18} />
+                </button>
+              </div>
             </div>
-
-            {/* Left arrow */}
-            <button
-              onClick={() =>
-                changeImage((index - 1 + images.length) % images.length)
-              }
-              aria-label="Previous project image"
-              className="absolute left-4 top-1/2 -translate-y-1/2
-               rounded-full bg-black/60 p-2 text-white
-               opacity-100 md:opacity-0 group-hover:opacity-100
-               transition-all duration-300 hover:bg-(--orange) hover:text-black"
-            >
-              ‹
-            </button>
-
-            {/* Right arrow */}
-            <button
-              onClick={() => changeImage((index + 1) % images.length)}
-              aria-label="Next project image"
-              className="absolute right-4 top-1/2 -translate-y-1/2
-               rounded-full bg-black/60 p-2 text-white
-               opacity-100 md:opacity-0 group-hover:opacity-100
-               transition-all duration-300 hover:bg-(--orange) hover:text-black"
-            >
-              ›
-            </button>
           </div>
         </div>
       </article>
       {selectedImg &&
         createPortal(
           <div
+            className="lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${title} screenshot ${index + 1}`}
             onClick={() => setSelectedImg(null)}
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              width: "100vw",
-              height: "100vh",
-              background: "rgba(0,0,0,0.8)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 9999,
-              overflow: "hidden",
-              boxSizing: "border-box",
-            }}
           >
-            <div
-              style={{
-                position: "relative",
-                maxWidth: "95vw",
-                maxHeight: "95vh",
-                display: "flex",
-              }}
-            >
+            <figure>
               <img
                 src={selectedImg}
-                alt="fullscreen"
-                style={{
-                  display: "block",
-                  maxWidth: "95vw",
-                  maxHeight: "95vh",
-                  width: "auto",
-                  height: "auto",
-                  objectFit: "contain",
-                  borderRadius: "8px",
-                }}
+                alt={`${title} screenshot ${index + 1}, full size`}
               />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedImg(null);
-                }}
-                style={{
-                  position: "absolute",
-                  top: 8,
-                  right: 8,
-                  color: "white",
-                  fontSize: "24px",
-                  background: "rgba(0,0,0,0.7)",
-                  borderRadius: "50%",
-                  width: 32,
-                  height: 32,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                ×
-              </button>
-            </div>
+            </figure>
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={() => setSelectedImg(null)}
+              aria-label="Close image"
+              ref={closeButtonRef}
+            >
+              <FiX aria-hidden="true" size={20} />
+            </button>
           </div>,
           document.body,
         )}
