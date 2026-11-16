@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -14,12 +14,37 @@ const links = [
 function TopBar() {
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
+  const topbarRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    let frameId;
+
+    const updateProgress = () => {
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress =
+        scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+
+      topbarRef.current?.style.setProperty(
+        "--scroll-progress",
+        String(Math.min(Math.max(progress, 0), 1)),
+      );
+      frameId = undefined;
+    };
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 8);
+      if (!frameId) frameId = requestAnimationFrame(updateProgress);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (frameId) cancelAnimationFrame(frameId);
+    };
   }, []);
 
   useEffect(() => {
@@ -58,7 +83,7 @@ function TopBar() {
   }, []);
 
   return (
-    <header className={`topbar${scrolled ? " is-scrolled" : ""}`}>
+    <header ref={topbarRef} className={`topbar${scrolled ? " is-scrolled" : ""}`}>
       <div className="topbar-inner">
         <a className="wordmark" href="#hero" aria-label="Beyrem Oueslati, back to top">
           <span className="wordmark-logo" aria-hidden="true">

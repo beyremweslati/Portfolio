@@ -79,7 +79,7 @@ function About() {
     <section ref={sectionRef} className="section-shell" id="about" aria-labelledby="about-title">
       <div className="section-heading">
         <h2 id="about-title">About</h2>
-        <p>Curious by default. Most useful when turning a messy problem into a clear system.</p>
+        <p>Curious by default, passionate since childhood.</p>
       </div>
       <div className="about-grid">
         <div className="about-card">
@@ -100,8 +100,7 @@ function About() {
             intelligent systems for real-world use cases.
           </p>
           <p>
-            I am constantly learning, experimenting, and looking for the next
-            difficult problem worth solving.
+            I am constantly learning, experimenting, and looking for opportunities to grow and improve. 
           </p>
           <dl className="skills-list">
             {skillGroups.map((group) => (

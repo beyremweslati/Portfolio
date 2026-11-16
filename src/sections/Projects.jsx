@@ -258,7 +258,7 @@ const Projects = () => {
             <span ref={counterRef}>01</span>
             <span className="projects-index-total"> / {pad(projectData.length)}</span>
           </span>
-          <span className="projects-hint">Scroll to pan the reel</span>
+          <span className="projects-hint">Featured Projects</span>
         </div>
 
         <div className="projects-viewport">

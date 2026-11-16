@@ -29,11 +29,11 @@ const Contact = () => {
 
       form.reset();
       setStatus("success");
-      setMessage("Message sent. I'll get back to you soon.");
+      setMessage("Message sent! I'll get back to you as soon as possible.");
     } catch (error) {
       console.error("Error sending email", error);
       setStatus("error");
-      setMessage("That didn't send. Please try again in a moment.");
+      setMessage("An error occurred while sending the email. Please try again later.");
     }
   };
 

@@ -41,8 +41,7 @@ function Hero() {
       </h1>
       <div className="hero-footer">
         <p className="hero-copy">
-          I design and build <strong>useful software</strong> at the intersection
-          of full-stack engineering, data, and intelligent systems.
+          I design and build <strong>impactful software</strong> and <strong>AI solutions</strong> that solve real-world problems. 
         </p>
         <SocialLinks limit={2} className="hero-links" />
       </div>
