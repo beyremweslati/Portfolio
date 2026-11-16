@@ -61,8 +61,10 @@ function TopBar() {
     <header className={`topbar${scrolled ? " is-scrolled" : ""}`}>
       <div className="topbar-inner">
         <a className="wordmark" href="#hero" aria-label="Beyrem Oueslati, back to top">
-          <span className="wordmark-mark" aria-hidden="true">BO</span>
-          <span className="wordmark-name">Beyrem Oueslati</span>
+          <span className="wordmark-logo" aria-hidden="true">
+            <span className="wordmark-path">/home/oues</span>
+            <span className="wordmark-prompt">&gt;</span>
+          </span>
         </a>
         <nav className="nav" aria-label="Primary navigation">
           {links.map((link) => (

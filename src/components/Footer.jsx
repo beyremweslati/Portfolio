@@ -4,7 +4,6 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <p className="footer-mark" aria-hidden="true">BO</p>
         <p className="footer-copy">
           Software engineer working across full-stack, data, and AI systems.
           <br />
