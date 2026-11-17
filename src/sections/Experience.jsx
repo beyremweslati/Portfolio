@@ -5,6 +5,16 @@ import { useGSAP } from "@gsap/react";
 
 const entries = [
   {
+    org: "ISSAT Sousse",
+    role: "Software Engineering",
+    context: "Higher Institute of Applied Science and Technology of Sousse",
+    date: "2026 — Present",
+    points: [
+      "Engineering degree"
+    ],
+    skills: [],
+  },
+  {
     org: "Lanterns Studios",
     role: "Software Engineering Intern",
     context: "Automated Bottleneck Detection & Performance Optimization System",

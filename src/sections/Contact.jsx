@@ -94,11 +94,10 @@ const Contact = () => {
         <div>
           <p className="contact-intro">
             Good work starts with a clear conversation. Tell me what you are
-            building and where it is stuck.
+            building and let us collaborate.
           </p>
           <p className="contact-note">
-            Share a little context and I will get back to you. The form goes
-            straight to my inbox.
+            Share a little context and I will get back to you. Fill the form or contact me using the links below.
           </p>
           <SocialLinks className="contact-socials" />
         </div>
@@ -145,7 +144,7 @@ const Contact = () => {
             <textarea
               id="contact-message"
               name="message"
-              placeholder="A little context helps."
+              placeholder="What would you like to discuss?"
               required
             />
           </div>

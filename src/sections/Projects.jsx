@@ -27,15 +27,15 @@ const projectData = [
     description:
       "An end-to-end system that collects Unreal Engine performance data in C++, processes it with FastAPI, analyses it with LangChain and LLMs, stores it in PostgreSQL, and presents findings in a React and Material UI dashboard.",
     images: project1,
-    tech: ["C++ / Unreal", "FastAPI", "LangChain", "PostgreSQL", "React"],
+    tech: ["C++ (Unreal Engine)", "FastAPI", "LangChain", "PostgreSQL", "React"],
   },
   {
     title: "Echrily",
     subtitle: "An e-commerce website for gaming enthusiasts",
     description:
-      "An e-commerce platform for video games with a Node.js and Express backend and MongoDB for data management. It supports dynamic game listings, cart state management, and a responsive storefront.",
+      "An e-commerce platform for video games with a Node.js and Express.js backend and MongoDB for data management. It supports dynamic game listings, cart state management, and a responsive storefront.",
     images: project2,
-    tech: ["Node.js", "Express", "MongoDB", "React"],
+    tech: ["JavaScript","CSS","HTML", "Node.js", "Express.js", "MongoDB"],
   },
   {
     title: "Echrily Admin Dashboard",
@@ -43,7 +43,7 @@ const projectData = [
     description:
       "A MERN admin dashboard for the Echrily platform. It imports games through the RAWG API and manages listings, customer orders, and platform analytics from one interface built with React and Material UI.",
     images: project3,
-    tech: ["MERN", "RAWG API", "Material UI", "Analytics"],
+    tech: ["React", "Node.js","Express.js", "MongoDB", "Material UI"],
   },
   {
     title: "DocVoice",
@@ -52,7 +52,7 @@ const projectData = [
     description:
       "A medical speech-to-text system built on a fine-tuned Whisper model. A preprocessing pipeline generates medical vocabulary audio with ElevenLabs, and LoRA training improves recognition of clinical terms. WER dropped from 277.19% to 70.18% and CER from 68.89% to 31.11% on roughly 220 samples.",
     images: project4,
-    tech: ["Whisper", "LoRA", "Python", "ElevenLabs"],
+    tech: ["Python", "Transformers","LoRA fine-tuning", "ElevenLabs", "Streamlit"],
   },
 ];
 

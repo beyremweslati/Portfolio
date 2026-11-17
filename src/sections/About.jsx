@@ -6,10 +6,10 @@ import { useGSAP } from "@gsap/react";
 
 const skillGroups = [
   { label: "Languages", items: ["Python", "JavaScript", "C++", "Java"] },
-  { label: "Frontend", items: ["React", "Tailwind CSS"] },
-  { label: "Backend", items: ["Node.js", "FastAPI"] },
-  { label: "AI", items: ["LangChain", "PyTorch"] },
-  { label: "Data", items: ["SQL", "MongoDB"] },
+  { label: "Frontend", items: ["React","Tailwind CSS","Material UI"] },
+  { label: "Backend", items: ["Node.js","Express.js" ,"FastAPI"] },
+  { label: "AI", items: ["Machine Learning", "LangChain", "PyTorch"] },
+  { label: "Database", items: ["MySQL","PostgreSQL","MongoDB"] },
   { label: "Tools", items: ["Git", "Docker", "Nginx", "Linux"] },
 ];
 
@@ -86,7 +86,7 @@ function About() {
           <img src={profilePic} alt="Beyrem Oueslati" />
           <div className="about-card-caption">
             <span>Beyrem Oueslati</span>
-            <span>Software engineer</span>
+            <span>Software Engineer</span>
           </div>
         </div>
         <div className="about-copy">
