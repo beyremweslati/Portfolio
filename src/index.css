@@ -362,9 +362,8 @@ li { list-style: none; }
 .projects-progress { display: none; }
 .projects-track {
   display: grid;
-  gap: 1px;
+  gap: 25px;
   border-block: 1px solid var(--line);
-  background: var(--line);
 }
 .projectCard {
   overflow: hidden;

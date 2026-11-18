@@ -84,26 +84,6 @@ const Projects = () => {
       });
     });
 
-    // Reaveal for mobile 
-    mm.add(
-      "(max-width: 1199px) and (prefers-reduced-motion: no-preference)",
-      () => {
-        cards.forEach((card) => {
-          gsap.from(card, {
-            opacity: 0,
-            y: 28,
-            duration: 0.7,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 88%",
-              once: true,
-            },
-          });
-        });
-      },
-    );
-
     // horizontal reveal for desktop
     mm.add(
       "(min-width: 1200px) and (prefers-reduced-motion: no-preference)",
